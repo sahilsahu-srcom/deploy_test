@@ -10,7 +10,7 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await fetch('/api/todos')
+      const response = await fetch('https://backend-15db.onrender.com/api/todos')
       const data = await response.json()
       setTodos(data)
     } catch (error) {
@@ -23,7 +23,7 @@ function App() {
     if (!newTodo.trim()) return
 
     try {
-      const response = await fetch('/api/todos', {
+      const response = await fetch('https://backend-15db.onrender.com/api/todos', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title: newTodo })
@@ -38,7 +38,7 @@ function App() {
 
   const toggleTodo = async (id, completed) => {
     try {
-      const response = await fetch(`/api/todos/${id}`, {
+      const response = await fetch(`https://backend-15db.onrender.com/api/todos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ completed: !completed })
@@ -52,7 +52,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await fetch(`/api/todos/${id}`, { method: 'DELETE' })
+      await fetch(`https://backend-15db.onrender.com/api/todos/${id}`, { method: 'DELETE' })
       setTodos(todos.filter(todo => todo.id !== id))
     } catch (error) {
       console.error('Error deleting todo:', error)
